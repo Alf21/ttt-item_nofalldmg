@@ -1,5 +1,8 @@
 if SERVER then
 	AddCSLuaFile()
+	
+	resource.AddFile("materials/vgui/ttt/icon_nofalldmg.vmt")
+	resource.AddFile("materials/vgui/ttt/perks/hud_nofalldmg.png")
 end
 
 EQUIP_NOFALLDMG = (GenerateNewEquipmentID and GenerateNewEquipmentID()) or 16
@@ -29,7 +32,7 @@ end
 
 if SERVER then
 	hook.Add("ScalePlayerDamage", "TTTNoFallDmg", function(ply, hitgroup, dmginfo)
-        if target:IsActive() and target:HasEquipmentItem(EQUIP_NOFALLDMG) then
+        if ply:IsActive() and ply:HasEquipmentItem(EQUIP_NOFALLDMG) then
             if dmginfo:IsFallDamage() then
 				dmginfo:ScaleDamage(0)
 			end
