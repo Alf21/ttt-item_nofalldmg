@@ -12,7 +12,7 @@ local nofalldmg = {
 	loadout = false,
 	type = "item_passive",
 	material = "vgui/ttt/icon_nofalldmg",
-	name = "No Fall Damage",
+	name = "NoFallDamage",
 	desc = "You don't get falldamage anymore!",
 	hud = true
 }
@@ -31,7 +31,7 @@ if traitorCanUse:GetBool() then
 end
 
 if SERVER then
-	hook.Add("ScalePlayerDamage", "TTTNoFallDmg", function(ply, hitgroup, dmginfo)
+	hook.Add("ScalePlayerDamage", "TTTNoFallDmg", function(ply, _, dmginfo)
         if ply:IsActive() and ply:HasEquipmentItem(EQUIP_NOFALLDMG) then
             if dmginfo:IsFallDamage() then
 				dmginfo:ScaleDamage(0)
